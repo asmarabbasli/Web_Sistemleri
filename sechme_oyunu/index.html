@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Seçmə Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts ilə zərif font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="background-animation"></div>
+
+    <div class="game-container">
+        <div class="header">
+            <h1>Mistik Meşə</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <h2 id="story-title" class="fade-in">Maraqlı Səyahət</h2>
+            <p id="story-text" class="fade-in">Bir dəfə qaranlıq bir meşədə oyanırsınız. Əlinizdəki xəritəni açıb baxırsınız. Qarşınızda iki yol var.</p>
+        </div>
+
+        <div id="options-container" class="options-grid fade-in">
+            <!-- Seçim düymələri buraya JavaScript ilə əlavə olunacaq -->
+        </div>
+        
+        <div id="result-container" class="hidden fade-in">
+            <h2 id="result-title"></h2>
+            <p id="result-desc"></p>
+            <button onclick="restartGame()" class="restart-btn">Yenidən Başla</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Saat</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div class="clock-wrapper">
+            <!-- Rəqəmsal Saat -->
+            <div class="digital-clock-section active">
+                <div class="time-container">
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-separator">:</span>
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-separator">:</span>
+                    <span class="time-value" id="seconds">00</span>
+                </div>
+                <div class="time-period" id="period">AM</div>
+            </div>
+
+            <!-- Analoq Saat -->
+            <div class="analog-clock-section">
+                <div class="analog-clock">
+                    <div class="clock-face">
+                        <div class="center-point"></div>
+                        <div class="hand hour-hand" id="hourHand"></div>
+                        <div class="hand minute-hand" id="minuteHand"></div>
+                        <div class="hand second-hand" id="secondHand"></div>
+                        <div class="marker-container">
+                            <div class="marker" style="--i: 0; --rot: 0deg;"></div>
+                            <div class="marker" style="--i: 1; --rot: 30deg;"></div>
+                            <div class="marker" style="--i: 2; --rot: 60deg;"></div>
+                            <div class="marker" style="--i: 3; --rot: 90deg;"></div>
+                            <div class="marker" style="--i: 4; --rot: 120deg;"></div>
+                            <div class="marker" style="--i: 5; --rot: 150deg;"></div>
+                            <div class="marker" style="--i: 6; --rot: 180deg;"></div>
+                            <div class="marker" style="--i: 7; --rot: 210deg;"></div>
+                            <div class="marker" style="--i: 8; --rot: 240deg;"></div>
+                            <div class="marker" style="--i: 9; --rot: 270deg;"></div>
+                            <div class="marker" style="--i: 10; --rot: 300deg;"></div>
+                            <div class="marker" style="--i: 11; --rot: 330deg;"></div>
+                        </div>
+                        <div class="roman-numerals">
+                            <span class="roman" style="--i: 12; --rot: 0deg;">XII</span>
+                            <span class="roman" style="--i: 1; --rot: 30deg;">I</span>
+                            <span class="roman" style="--i: 2; --rot: 60deg;">II</span>
+                            <span class="roman" style="--i: 3; --rot: 90deg;">III</span>
+                            <span class="roman" style="--i: 4; --rot: 120deg;">IV</span>
+                            <span class="roman" style="--i: 5; --rot: 150deg;">V</span>
+                            <span class="roman" style="--i: 6; --rot: 180deg;">VI</span>
+                            <span class="roman" style="--i: 7; --rot: 210deg;">VII</span>
+                            <span class="roman" style="--i: 8; --rot: 240deg;">VIII</span>
+                            <span class="roman" style="--i: 9; --rot: 270deg;">IX</span>
+                            <span class="roman" style="--i: 10; --rot: 300deg;">X</span>
+                            <span class="roman" style="--i: 11; --rot: 330deg;">XI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarix Göstəricisi -->
+            <div class="date-section">
+                <div class="date-container">
+                    <span class="day-name" id="dayName">Bazar</span>
+                    <span class="date-number" id="dateNumber">1</span>
+                    <span class="month-name" id="monthName">Yanvar</span>
+                    <span class="year-number" id="yearNumber">2025</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alt Menyu -->
+        <div class="bottom-menu">
+            <button class="menu-btn active" id="digitalBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Rəqəmsal</span>
+            </button>
+            <button class="menu-btn" id="analogBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Analoq</span>
+            </button>
+            <button class="menu-btn" id="bothBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="12" x2="12" y2="16"></line>
+                </svg>
+                <span>Hər İkisi</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

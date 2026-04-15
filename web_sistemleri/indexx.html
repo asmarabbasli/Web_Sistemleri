@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cüt ədəd yoxlayıcısı</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background: #fff; border-radius: 12px; border: 1px solid #e0e0e0; padding: 1.75rem; width: 100%; max-width: 440px; }
+    h2 { font-size: 18px; font-weight: 500; margin-bottom: 1.5rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .field label { display: block; font-size: 12px; color: #888; margin-bottom: 6px; }
+    .field input { width: 100%; font-size: 16px; padding: 10px 12px; border-radius: 8px; border: 1px solid #ccc; outline: none; transition: border-color 0.15s; }
+    .field input:focus { border-color: #888; }
+    .btn { width: 100%; padding: 11px; font-size: 15px; font-weight: 500; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+    .btn:hover { background: #f5f5f5; }
+    .btn:active { transform: scale(0.98); }
+    .result-box { margin-top: 1rem; border-radius: 8px; padding: 1rem 1.25rem; display: none; gap: 12px; }
+    .result-box.show { display: flex; align-items: flex-start; }
+    .r-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .r-text { font-size: 15px; font-weight: 500; }
+    .r-sub { font-size: 12px; margin-top: 4px; color: #666; }
+    .badges { display: flex; gap: 8px; margin-top: 1rem; }
+    .badge { flex: 1; border-radius: 8px; padding: 10px; text-align: center; }
+    .badge .bnum { font-size: 22px; font-weight: 500; }
+    .badge .blabel { font-size: 11px; color: #888; margin-top: 3px; }
+    .badge .btag { font-size: 11px; font-weight: 500; margin-top: 6px; border-radius: 4px; padding: 2px 8px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Cüt ədəd yoxlayıcısı</h2>
+    <div class="row">
+      <div class="field">
+        <label>1-ci ədəd</label>
+        <input type="number" id="num1" placeholder="0" oninput="clearResult()">
+      </div>
+      <div class="field">
+        <label>2-ci ədəd</label>
+        <input type="number" id="num2" placeholder="0" oninput="clearResult()">
+      </div>
+    </div>
+    <button class="btn" onclick="hesab()">Yoxla</button>
+
+    <div class="result-box" id="result-box">
+      <div class="r-icon" id="r-icon"></div>
+      <div>
+        <div class="r-text" id="r-text"></div>
+        <div class="r-sub" id="r-sub"></div>
+      </div>
+    </div>
+
+    <div class="badges" id="badges" style="display:none">
+      <div class="badge" id="b1">
+        <div class="bnum" id="b1num"></div>
+        <div class="blabel" id="b1label"></div>
+        <div class="btag" id="b1tag"></div>
+      </div>
+      <div class="badge" id="b2">
+        <div class="bnum" id="b2num"></div>
+        <div class="blabel" id="b2label"></div>
+        <div class="btag" id="b2tag"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function clearResult() {
+      document.getElementById('result-box').classList.remove('show');
+      document.getElementById('badges').style.display = 'none';
+    }
+
+    function isCut(n) { return n % 2 === 0; }
+
+    function setBadge(id, num, label, cut) {
+      document.getElementById(id + 'num').textContent = num;
+      document.getElementById(id + 'label').textContent = label;
+      const tag = document.getElementById(id + 'tag');
+      tag.textContent = cut ? 'Cütdür' : 'Təkdir';
+      const color = cut ? '#2a7a3b' : '#a06000';
+      document.getElementById(id).style.background = cut ? '#e6f4ea' : '#fef3e8';
+      tag.style.background = cut ? '#c8e6c9' : '#ffe0b2';
+      tag.style.color = color;
+      document.getElementById(id + 'num').style.color = color;
+    }
+
+    function hesab() {
+      const v1 = document.getElementById('num1').value;
+      const v2 = document.getElementById('num2').value;
+      const a = Number(v1), b = Number(v2);
+      const box = document.getElementById('result-box');
+      box.classList.add('show');
+
+      if (v1 === '' || v2 === '' || isNaN(a) || isNaN(b)) {
+        box.style.background = '#fce8e6';
+        document.getElementById('r-icon').textContent = '!';
+        document.getElementById('r-text').style.color = '#c62828';
+        document.getElementById('r-text').textContent = 'Düzgün ədəd daxil edin';
+        document.getElementById('r-sub').textContent = 'Hər iki sahə doldurulmalıdır';
+        document.getElementById('badges').style.display = 'none';
+        return;
+      }
+
+      const ca = isCut(a), cb = isCut(b);
+      const icon = document.getElementById('r-icon');
+      const text = document.getElementById('r-text');
+      const sub  = document.getElementById('r-sub');
+
+      if (ca && cb) {
+        box.style.background = '#e6f4ea';
+        icon.textContent = '✓';
+        text.style.color = '#2a7a3b';
+        text.textContent = 'Hər iki ədəd 2-yə qalıqsız bölünür';
+        sub.textContent = `${a} ÷ 2 = ${a / 2},  ${b} ÷ 2 = ${b / 2}`;
+      } else if (!ca && !cb) {
+        box.style.background = '#fef9e7';
+        icon.textContent = '✗';
+        text.style.color = '#a06000';
+        text.textContent = 'Hər iki ədəd tək ədəddir';
+        sub.textContent = 'Heç biri 2-yə qalıqsız bölünmür';
+      } else {
+        box.style.background = '#e8f0fe';
+        icon.textContent = '~';
+        text.style.color = '#1a5dab';
+        text.textContent = 'Yalnız bir ədəd cütdür';
+        sub.textContent = ca ? `${a} cütdür, ${b} təkdir` : `${a} təkdir, ${b} cütdür`;
+      }
+
+      setBadge('b1', a, '1-ci ədəd', ca);
+      setBadge('b2', b, '2-ci ədəd', cb);
+      document.getElementById('badges').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>

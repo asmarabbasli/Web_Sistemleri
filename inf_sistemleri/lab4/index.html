@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Qarabağ Azərbaycandır</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #f5f0e8;
+      color: #1a1a1a;
+    }
+
+    /* ── FLAG BAR ── */
+    .flag-bar { display: flex; height: 8px; }
+    .flag-bar span { flex: 1; }
+    .flag-bar .blue  { background: #0404b1; }
+    .flag-bar .red   { background: #EF3340; }
+    .flag-bar .green { background: #027e06; }
+
+    /* ── HEADER ── */
+    header {
+      background: #fff;
+      padding: 32px 40px 24px;
+      border-bottom: 2px solid #c8000a;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #8B0000;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #333;
+      max-width: 620px;
+    }
+
+    /* ── BANNER ── */
+    .banner-box {
+      background: #fff;
+      margin: 24px 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+      animation: fadeUp 0.9s 0.2s ease both;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .banner-inner {
+      position: relative;
+      background: linear-gradient(135deg, #04278f 0%, #8B0000 40%, #106910 100%);
+      padding: 48px 32px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .banner-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(25, 2, 156, 0.25) 0%,   rgba(17, 41, 220, 0.25) 33.3%,
+        rgba(177, 16, 26, 0.25) 33.3%, rgba(173, 4, 4, 0.729) 66.6%,
+        rgba(5, 116, 69, 0.25) 66.6%, rgba(0,175,102,0.25) 100%);
+    }
+
+    .banner-text { position: relative; z-index: 2; }
+
+    .banner-text h2 {
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 3px 10px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+      line-height: 1.15;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .banner-text h2 span { color: #FFD700; }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 2px 3px 10px rgba(0,0,0,0.5); }
+      50% { text-shadow: 2px 3px 25px rgba(255,215,0,0.4), 2px 3px 10px rgba(0,0,0,0.5); }
+    }
+
+    .crescent {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 8px;
+      animation: rotateStar 8s linear infinite;
+      filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+    }
+
+    @keyframes rotateStar {
+      0%, 100% { transform: rotate(-5deg); }
+      50%       { transform: rotate(5deg); }
+    }
+
+    /* ── BUTTONS ── */
+    .dates-section {
+      background: #fff;
+      margin: 0 40px;
+      padding: 20px 24px;
+      border: 1px solid #ddd;
+      border-top: none;
+      animation: fadeUp 0.9s 0.4s ease both;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dates-section button {
+      width: 100%;
+      padding: 13px 20px;
+      background: #fff;
+      border: 1.5px solid #8B0000;
+      border-radius: 4px;
+      color: #8B0000;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .dates-section button:hover {
+      background: #8B0000;
+      color: #fff;
+      transform: translateX(6px);
+      box-shadow: 0 3px 12px rgba(139,0,0,0.25);
+    }
+
+    /* ── MEMORIAL ── */
+    .memorial {
+      background: #fff;
+      margin: 24px 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 36px 24px;
+      text-align: center;
+      animation: fadeUp 0.9s 0.6s ease both;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .flower-wrap { margin-bottom: 16px; }
+
+    .flower-svg {
+      width: 90px;
+      height: 90px;
+      animation: floatFlower 3s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(147,112,219,0.3));
+    }
+
+    @keyframes floatFlower {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .memorial-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    footer { margin-top: 10px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header, .banner-box, .dates-section, .memorial { margin-left: 16px; margin-right: 16px; }
+      header { padding: 24px 20px 18px; }
+      header h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flag-bar">
+    <span class="blue"></span>
+    <span class="red"></span>
+    <span class="green"></span>
+  </div>
+
+  <header>
+    <h1>Qarabağ Azərbaycandır!</h1>
+    <p>
+      <strong>Anım Günü</strong> — Azərbaycan Respublikasında 2020-ci il sentyabrın 27-dən
+      noyabrın 10-a qədər davam edən İkinci Qarabağ müharibəsində həyatını itirən
+      şəhidlərin xatirəsinin anılması.
+    </p>
+  </header>
+
+  <div class="banner-box">
+    <div class="banner-inner">
+      <div class="banner-text">
+        <h2>QARABAĞ<span></span></h2>
+        <span class="crescent">☽ ✦</span>
+        <h2>AZƏRBAYCANDİR<span>!</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="dates-section">
+    <button>27 sentyabr - Anım Günü</button>
+    <button>3 oktyabr</button>
+    <button>9 oktyabr</button>
+  </div>
+
+  <div class="memorial">
+    <div class="flower-wrap">
+      <svg class="flower-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="50" cy="28" rx="10" ry="22" fill="#9b59b6" opacity="0.9" transform="rotate(-25 50 55)"/>
+        <ellipse cx="50" cy="28" rx="10" ry="22" fill="#7d3c98" opacity="0.8" transform="rotate(0 50 55)"/>
+        <ellipse cx="50" cy="28" rx="10" ry="22" fill="#a569bd" opacity="0.7" transform="rotate(25 50 55)"/>
+        <ellipse cx="30" cy="72" rx="7"  ry="20" fill="#27ae60" opacity="0.85" transform="rotate(-35 30 72)"/>
+        <ellipse cx="70" cy="72" rx="7"  ry="20" fill="#2ecc71" opacity="0.75" transform="rotate(35 70 72)"/>
+        <rect x="48" y="55" width="4" height="32" rx="2" fill="#27ae60" opacity="0.85"/>
+        <circle cx="50" cy="54" r="8" fill="#f39c12"/>
+        <circle cx="50" cy="54" r="4" fill="#e67e22"/>
+      </svg>
+    </div>
+    <p class="memorial-text">Şəhidlərimizi ehtiramla yad edək!</p>
+  </div>
+
+  <footer>
+    <div class="flag-bar">
+      <span class="blue"></span>
+      <span class="red"></span>
+      <span class="green"></span>
+    </div>
+  </footer>
+
+</body>
+</html>
